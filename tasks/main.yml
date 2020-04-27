@@ -21,7 +21,7 @@
     owner: postgres
     group: backup
     mode: 0640
-    state: present
+    state: touch
 
 - name: Create postgresql backup service and timer
   become: True
