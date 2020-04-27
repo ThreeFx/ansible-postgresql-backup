@@ -11,7 +11,9 @@ None.
 Role Variables
 --------------
 
-None.
+| Variable Name | Default Value | Description |
+--------------- |---------------|--------------
+`postgresql_backup_user` | restic | Group which owns the postgresql backup
 
 Dependencies
 ------------

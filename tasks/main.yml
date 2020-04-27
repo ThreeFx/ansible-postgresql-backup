@@ -10,8 +10,6 @@
   become: True
   file:
     path: /backup
-    owner: backup
-    group: backup
     state: directory
 
 - name: Ensure backup file exists
@@ -19,7 +17,7 @@
   file:
     path: /backup/postgres.sql
     owner: postgres
-    group: backup
+    group: "{{ postgresql_backup_user }}"
     mode: 0640
     state: touch
 
