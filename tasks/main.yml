@@ -14,12 +14,13 @@
 
 - name: Ensure backup file exists
   become: True
-  file:
-    path: /backup/postgres.sql
+  copy:
+    content: ""
+    force: no
+    dest: /backup/postgres.sql
     owner: postgres
     group: "{{ postgresql_backup_user }}"
     mode: 0640
-    state: touch
 
 - name: Create postgresql backup service and timer
   become: True
