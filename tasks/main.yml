@@ -1,4 +1,11 @@
 ---
+- name: Ensure backup user exists
+  become: True
+  user:
+    name: backup
+    system: yes
+    createhome: no
+
 - name: Ensure backup directory exists
   become: True
   file:
