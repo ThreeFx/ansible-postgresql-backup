@@ -1,0 +1,7 @@
+---
+- name: restart postgresql backup timer
+  become: True
+  systemd:
+    name: postgresql-backup.timer
+    state: restarted
+    enabled: yes

@@ -1,0 +1,27 @@
+---
+- name: Ensure backup directory exists
+  become: True
+  file:
+    path: /backup
+    owner: backup
+    group: backup
+    state: directory
+
+- name: Ensure backup file exists
+  become: True
+  file:
+    path: /backup/postgres.sql
+    owner: postgres
+    group: backup
+    mode: 0640
+    state: present
+
+- name: Create postgresql backup service and timer
+  become: True
+  template:
+    src: "postgresql-backup.{{ item }}.j2"
+    dest: "/etc/systemd/system/postgresql-backup.{{ item }}"
+  with_items:
+    - service
+    - timer
+  notify: restart postgresql backup timer

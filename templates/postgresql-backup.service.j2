@@ -1,0 +1,8 @@
+[Unit]
+Description=Back up postgresql locally
+
+[Service]
+Type=oneshot
+User=postgres
+ExecStart=/usr/bin/pg_dumpall
+StandardOutput=file:/backup/postgres.sql
